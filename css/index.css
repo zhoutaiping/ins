@@ -1,0 +1,142 @@
+
+
+.main {
+    width: 100%;
+    min-width: 1366px;
+    height: 100%;
+    background-color: #CCCCCC;
+}
+
+.center{
+    width: 60%;
+    height: 100%;
+    border: 1px solid #f40;
+    padding: 10px;
+    display: table-cell;
+    background-color: #CCCCCC;
+}
+#menu {
+    position: absolute;
+    width: 24%;
+    height: 90%;
+    border: 1px solid black;
+
+    top: 5%;
+    left: 10px;
+}
+#topsearch {
+    position: absolute;
+    width: 80%;
+    min-width: 1024px;
+    height: 20%;
+    border: 1px solid black;
+    top: 5%;
+    left: 10%
+}
+
+#container {
+    position: absolute;
+    width: 80%;
+    height: 60%;
+    border: 1px solid black;
+    border-top:none;
+    top: 25%;
+    left: 10%;
+}
+#group {
+     position: absolute;
+     width: 80%;
+     height: 5%;
+     min-height: 50px;
+     background-color: #F5F5F5;
+     border-top:none;
+     float: left;
+     top: 85%;
+     left: 10%;
+ }
+
+#topbottom {
+    width: 100%;
+    /*height: 50px;*/
+    /*position: absolute;*/
+    top: 0;
+    left: 520px;
+    float: left;
+    /*text-align: center;*/
+    border: 1px solid;
+}
+
+#search {
+    width: 80px;
+    height: 30px;
+    min-height:30px;
+    padding:0;
+
+    /*background-color: rgba(0, 4, 255, 0.64);*/
+}
+
+#select {
+    width: 430px;
+    border: 1px solid black;
+    position: absolute;
+    left: 10px;
+    top: 0;
+    float: left;
+}
+
+#select select {
+    width: 300px;
+    height: 30px;
+    margin-top: 5px;
+    float:left;
+}
+#select a {
+    font-size: 10px;
+    width: 120px;
+    color: red;text-decoration:none;display: none;
+    margin-left: 5px;float:left;line-height: 40px;
+}
+#table{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background-color: #8080803b;
+}
+
+
+ul,li{margin: 0;padding: 0;list-style: none;}
+
+.page{width: 100%;height: 100%;margin: 0 auto;}
+.pageMenu{display: inline-block;left: 20%;}
+
+.pageMenu li{border: solid thin #ddd;margin: 3px;float: left;padding: 5px 10px;cursor: pointer;background: #fff;}
+.pageMenu li.firstPage{}
+.pageMenu li.prevPage{}
+.pageMenu li.pageNum{}
+.pageMenu li.nextPage{}
+.pageMenu li.lastPage{}
+.pageMenu li.disabled{ background-color: #DDDDDD;   cursor: not-allowed;}
+.pageMenu li.active{ border: solid thin #0099FF;background-color: #0099FF;color: white;}
+.pageMenu li.last{background: transparent;border:0;position: relative;top: -4px; display: inline-block;}
+.pageMenu li.groupPage{background: transparent;border:0;position: relative;top: -4px; display: inline-block;}
+.pageMenu li select{
+    /*background: transparent;*/
+    border:0;   width: 70px;
+    position: relative;top: -4px;
+    display: inline-block;}
+.page .keuInput{
+    padding: 0 5px ;width: 80px;
+
+    height: 29px;outline: none;
+    text-align: left;
+    display: inline-block;
+    font-size: 16px;position: relative;
+}
+.page .btnSure{/*padding: 4px 8px;*/
+    border: solid thin #ddd;outline: none;
+    text-align: center;font-size: 16px;
+    color:black;background: #fff;
+    position: relative;top: 2px;
+}
+.page .btnSure:hover{cursor: pointer;}
+.pageObj{float: left;}
