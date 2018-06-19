@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>保险条款内容明细</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="./ajax/ajax.min.js"></script>
+    <script src="./js/pdfobject.min.js"></script>
+    <style>
+        html,body,#example1{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="example1"></div>
+<script type="text/javascript">
+    this.onInfo(GetRequest());
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+                theRequest['pdf'] = strs[i].split("=")[2];
+            }
+        }
+        return theRequest;
+    }
+
+    function onInfo(data){
+        var id = data.id;
+        var src = 'http://106.14.62.143:5888/ins_pdf/'+id+'/'+data.pdf+'_TERMS.PDF';
+        console.log(src)
+        if(PDFObject.supportsPDFs){
+            // PDF嵌入到网页
+            PDFObject.embed(src, "#example1" );
+        } else {
+            location.href = "/canvas";
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- layUi -->
+    <link href="./layui/css/layui.css" rel="stylesheet" media="screen">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="./ajax/ajax.min.js"></script>
+    <script src="./layui/layui.all.js"></script>
+    <title>保险详情</title>
+
+</head>
+<body class="layui-layout-body">
+
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">磁体链--保险详情</div>
+    </div>
+    <div class="layui-body">
+        <div class="layui-row">
+            <div class="layui-col-lg8 layui-col-md-offset2" style="margin-top: 20px">
+                <div class="layui-row">
+                    <div id="link_pdf" class="layui-col-lg-12" style=" width:500px;height: 50px;margin:auto;text-align: right;line-height: 100px;">
+
+                    </div>
+                </div>
+                <div class="layui-row">
+                    <div id="tab_div"  style="width:500px;height: 50px;margin:auto;">
+                        <table id="tabInfo" class="layui-table">
+
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="layui-footer">
+        © 磁体链--保险单
+    </div>
+
+</div>
+
+<script>
+    layui.use(['form', 'table'], function () {
+        var table = layui.table,form = layui.form;
+        $('#tab_div').height(450);
+        onInfo(GetRequest());
+        function GetRequest() {
+            var url = location.search; //获取url中"?"符后的字串
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for (var i = 0; i < strs.length; i++) {
+                    theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        }
+
+        var productid = null, categorie = null;
+        function onInfo(data) {
+            var id = data.id;
+            var src = '/api/xiangxi/' + id + '';
+            ajax({
+                type: "get",
+                url: src, //添加自己的接口链接
+                timeOut: 5000,
+                before: function () {
+                },
+                success: function (data) {
+                    var data = JSON.parse(data);
+                    productid = data['productid'] + "";
+                    categorie = data.categorie;
+                    $('#link_pdf').empty();
+                    $('#link_pdf').append("<a id = 'link_a'  lay-submit lay-filter='show_pdfBtn' href='#' style='color: #01AAED'>查看保险产品详情</a>");
+                    setTabTr(data);
+                },
+                error: function () {
+                }
+            });
+        }
+        function setTabTr(data) {
+            var chenbao ={
+                0 : '无', 1 : '个人', 2 : '团体','':'暂无'
+            };
+            var qijian ={
+                0 : '无', 1 : '短期（一年及一年以下）', 2 : '长期（超过一年或含有保证续保条款）','':'暂无'
+            };
+            var shuxing ={
+                1 : '无', 2 : '女性专属产品',3 : '学生平安保险',4 : '少儿专属产品',
+                5 : '老年专属产品', 6 : '航空意外保险','':'暂无'
+            };
+            var xiaoshou ={
+                0 : '无', 1 : '在售', 2 : '停售', 3 : '停用','':'暂无'
+            };
+            var jiaofei ={
+                0 : '无', 1 : '一次性交费', 2 : '分期交费',
+                3 : '分期交费一次性交费兼有', 4 : '灵活交费','':'暂无'
+            };
+            var leixing ={
+                0 : '无', 1 : '传统型', 2 : '新型', 3 : '普通型', 4 : '万能型',
+                5 : '现金红利', 6 : '增额红利', 7 : '投资连结型', 8 : '其他新型','':'暂无'
+            };
+
+            var gridData = [
+                {name: '公司名称', content: data.gongsi},
+                {name: '产品名称', content: data.chanpin},
+                {name: '产品类别', content: data.leibie},
+                {name: '设计类型', content: leixing[data.leixing]},
+                {name: '产品特殊属性', content: shuxing[data.shuxing]},
+                {name: '承保方式', content: chenbao[data.chenbao]},
+                {name: '保险期间类型', content: qijian[data.qijian]},
+                {name: '产品交费方式', content: jiaofei[data.jiaofei]},
+                {name: '产品条款文字编码', content: data.tiaokuan},
+                {name: '产品销售状态', content: xiaoshou[data.xiaoshou]},
+                {name: '停止销售日期', content: data.tingshou}
+            ];
+
+            //第一个实例
+            table.render({
+                elem: '#tabInfo'
+                ,height: 430
+                ,data:gridData //数据接口
+                ,page: false
+                ,cols: [[ //表头
+                    {field: 'name', title: '<span style="text-align: right">保险单明细</span>', width:200, sort: false},
+                    {field: 'content', title: '<span style="text-align: right">内容</span>', width:295,sort:false}
+                ]]
+            });
+
+            //查看按钮监听
+            form.on('submit(show_pdfBtn)', function(obj){
+                var pdf = productid,id = categorie;
+                var str = '/pdf.html?id=' + id + '=' + pdf;
+                window.open(str, '_blank', '');
+            });
+        }
+    });
+
+</script>
+
+</body>
+</html>

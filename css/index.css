@@ -1,0 +1,144 @@
+* {
+    margin:0;
+    padding:0;
+}
+html,
+body,
+#box {
+    height:100%;
+    font:small/1.5 "宋体", serif;
+}
+body {
+    text-align:center;
+}
+
+
+.main {
+    text-align:left;
+    display:table;
+    width:80%;
+    margin:0 auto;
+    position:relative;
+}
+
+.center{
+    width: 60%;
+    height: 100%;
+    border: 1px solid #f40;
+    padding: 10px;
+    display: table-cell;
+    background-color: #CCCCCC;
+}
+#menu {
+    position: absolute;
+    width: 24%;
+    height: 90%;
+    border: 1px solid black;
+    top: 5%;
+    left: 10px;
+}
+#topsearch {
+    min-width: 1024px;
+    height: 215px;
+    border: 1px solid black;
+    vertical-align: bottom;
+    margin-top: 20px;
+}
+
+#container {
+    min-width: 1024px;
+    height: 350px;
+    border: 1px solid black;
+    border-top:none;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+#group {
+    width: 100%;
+    background-color: #F5F5F5;
+    border-top: none;
+    float: left;
+    vertical-align: bottom;
+ }
+
+#topbottom {
+    width: 100%;
+    margin-top: 5px;
+    float: left;
+}
+
+#search {
+    width: 80px;
+    height: 30px;
+    min-height:30px;
+    padding:0;
+}
+
+#select {
+    width: 430px;
+    margin-left: 10px;
+    float: left;
+}
+
+#select select {
+    width: 300px;
+    height: 30px;
+    margin-top: 5px;
+    float:left;
+}
+#select a {
+    font-size: 10px;
+    width: 120px;
+    color: red;text-decoration:none;display: none;
+    margin-left: 5px;float:left;line-height: 40px;
+}
+#bordered{
+    width: 100%;
+    height: 100%;
+}
+
+
+ul,li{margin: 0;padding: 0;list-style: none;}
+
+.page{width: auto;  height: 50px;margin: 0 auto;}
+.pageMenu{display: inline-block;left: 20%;}
+
+.pageMenu li{border: solid thin #ddd;margin: 3px;float: left;padding: 5px 10px;cursor: pointer;background: #fff;}
+.pageMenu li.firstPage{}
+.pageMenu li.prevPage{}
+.pageMenu li.pageNum{}
+.pageMenu li.nextPage{
+    display: inline-block;
+}
+.pageMenu li.lastPage{}
+.pageMenu li.disabled{ background-color: #DDDDDD;   cursor: not-allowed;}
+.pageMenu li.active{ border: solid thin #0099FF;background-color: #0099FF;color: white;}
+.pageMenu li.last{background: transparent;border:0;position: relative;top:2px; display: inline-block;}
+.pageMenu li.groupPage{background: transparent;border:0;position: relative;top: -4px; display: inline-block;}
+.pageMenu li select{
+    /*background: transparent;*/
+    border:0;   width: 70px;
+    position: relative;top: -4px;
+    display: inline-block;}
+.page .keuInput{
+    padding: 0 5px ;width: 80px;
+
+    height: 29px;outline: none;
+    text-align: left;
+    display: inline-block;
+    font-size: 16px;position: relative;
+}
+.page .btnSure{/*padding: 4px 8px;*/
+    border: solid thin #ddd;outline: none;
+    text-align: center;font-size: 16px;
+    color:black;background: #fff;
+    position: relative;top: 2px;
+}
+.page .btnSure:hover{cursor: pointer;}
+.pageObj{float: left;}
+
+
+
+
+
+

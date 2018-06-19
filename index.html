@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>磁体链-保险平台</title>
+    <!-- layUi -->
+    <link href="./layui/css/layui.css" rel="stylesheet" media="screen">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="./ajax/ajax.min.js"></script>
+    <script src="./layui/layui.all.js"></script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">磁体链-保险平台</div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div class="layui-row">
+            <div class="layui-col-lg12" style="height:250px;border: 1px solid #CCCCCC;margin-top: 5px">
+                <form class="layui-form" action="">
+                    <div class="layui-form-item" style="margin-top: 5px;">
+                        <label class="layui-form-label">承保方式</label>
+                        <div class="layui-input-inline">
+                            <select id="chenbao" name="chenbao"  lay-verify="required" lay-filter="select_chenbao">
+                                <option value="0">无</option>
+                                <option value="1">个人</option>
+                                <option value="2">团体</option>
+                            </select>
+                        </div>
+
+                        <label class="layui-form-label">保险期间</label>
+                        <div class="layui-input-inline">
+                            <select id="qijian" name="qijian" lay-verify="required" lay-filter="select_qijian">
+                                <option value="0">无</option>
+                                <option value="1">短期（一年及一年以下）</option>
+                                <option value="2">长期（超过一年或含有保证续保条款）</option>
+                            </select>
+                        </div>
+
+                        <label class="layui-form-label">产品属性</label>
+                        <div class="layui-input-inline">
+                            <select id="shuxing" name="shuxing" lay-verify="required" lay-filter="select_shuxing">
+                                <option value="1">无</option>
+                                <option value="2">女性专属产品</option>
+                                <option value="3">学生平安保险</option>
+                                <option value="4">少儿专属产品</option>
+                                <option value="5">老年专属产品</option>
+                                <option value="6">航空意外保险</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="layui-form-item" style="margin-top: 5px;">
+                        <label class="layui-form-label">销售状态</label>
+                        <div class="layui-input-inline">
+                            <select id="xiaoshou" name="xiaoshou" lay-verify="required" lay-filter="select_xiaoshou">
+                                <option value="0">无</option>
+                                <option value="1">在售</option>
+                                <option value="2">停售</option>
+                                <option value="2">停用</option>
+                            </select>
+                        </div>
+
+                        <label class="layui-form-label">缴费类型</label>
+                        <div class="layui-input-inline">
+                            <select id="jiaofei" name="jiaofei" lay-verify="required" lay-filter="select_jiaofei">
+                                <option value="0">无</option>
+                                <option value="1">一次性交费</option>
+                                <option value="2">分期交费</option>
+                                <option value="2">分期交费一次性交费兼有</option>
+                                <option value="2">灵活交费</option>
+                            </select>
+                        </div>
+
+                        <label class="layui-form-label">产品类型</label>
+                        <div class="layui-input-inline">
+                            <select id="leixing" name="leixing" lay-verify="required" lay-filter="select_leixing">
+                                <option value="0">无</option>
+                                <option value="1">传统型</option>
+                                <option value="2">新型</option>
+                                <option value="3">普通型</option>
+                                <option value="4">万能型</option>
+                                <option value="5">现金红利</option>
+                                <option value="6">投资连结型</option>
+                                <option value="6">其他新型</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item" style="margin-top: 5px;">
+                        <label class="layui-form-label">保险类别</label>
+                        <div class="layui-input-inline">
+                            <select id="leveone" lay-verify="required" lay-filter="select_leveone">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <div id="leveone_lable" class="layui-form-mid" style="width:10px;color: red">*</div>
+                        <div id="levetwo_div" style="display: none">
+                            <!--<label class="layui-form-label">保险类型</label>-->
+                            <div class="layui-input-inline">
+                                <select id="levetwo" lay-filter="select_levetwo" >
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                            <div id="levetwo_lable" class="layui-form-mid" style="width:10px;color: red">*</div>
+
+                        </div>
+
+                        <div id="levethree_div" style="display: none">
+                            <!--<label class="layui-form-label">保险类型</label>-->
+                            <div class="layui-input-inline">
+                                <select id="levethree" lay-filter="select_levethree">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                            <div id="levethree_lable" class="layui-form-mid" style="width:10px;color: red">*</div>
+                        </div>
+
+                        <div id="levefour_div" style="display: none">
+                            <!--<label  class="layui-form-label">保险类型</label>-->
+                            <div class="layui-input-inline">
+                                <select id="levefour" lay-filter="select_levefour">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                            <div id="levefour_lable" class="layui-form-mid" style="width:10px;color: red">*</div>
+                        </div>
+
+                    </div>
+                    <div class="layui-form-item" style="margin-top: 5px;">
+                        <label class="layui-form-label">保险名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" id = "chanpin_name" name="chanpin_name" lay-verify="title" autocomplete="off"
+                                   placeholder="保险名称--模糊匹配" class="layui-input" style="width: 410px">
+                        </div>
+
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="insGrid">
+                                <i class="layui-icon">&#xe615;</i> 搜索
+                            </button>
+                            <button type="reset" class="layui-btn layui-btn-primary">
+                                <i class="layui-icon">&#xe9aa;</i>重置
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id = "tabDiv" class="layui-col-lg12">
+                <table id = "tabGrid" class="layui-table">
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        © 磁体链--保险单
+    </div>
+</div>
+
+<script src="./js/layuihtml.js"></script>
+
+<script type="text/html"  id="showInfoBtn">
+    <!-- 这里的 checked 的状态只是演示 -->
+    <button class="layui-btn"  lay-submit lay-filter="showInfoBtn"
+            value = '{{d.id}}'
+            style="height: 30px;line-height: 3px;">查看</button>
+</script>
+</body>
+</html>
